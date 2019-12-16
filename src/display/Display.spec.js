@@ -29,5 +29,13 @@ describe('Display component', ()=>{
             wrapper = rtl.render(<Display />)
             expect(Closed()).toBeVisible();
         })
+        it('Renders "Locked" if locked prop is true and "Unlocked" otherwise', ()=>{
+            
+            wrapper = rtl.render(<Display locked={true} />)
+            expect(Unlocked()).toBeVisible();
+            wrapper = rtl.render(<Display />)
+            expect(Locked()).toBeVisible();
+            
+        })
     
     })
