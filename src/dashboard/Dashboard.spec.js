@@ -7,6 +7,7 @@ import '@testing-library/jest-dom/extend-expect';
 import Dashboard from './Dashboard';
 
 
+
 afterEach(rtl.cleanup);
 let wrapper;
 let Unlocked =()=> wrapper.queryByText('Unlocked');
@@ -55,3 +56,4 @@ describe('Dashboard component when gate is close', () =>{
     })
 
 })
+
