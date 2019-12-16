@@ -15,6 +15,7 @@ let Closed =()=> wrapper.queryByText('Closed');
 let Opened =()=> wrapper.queryByText('Open');
 let LockGate=()=> wrapper.queryByText('Lock Gate');
 let CloseGate =()=> wrapper.queryByText('Close Gate');
+let OpenGate =()=> wrapper.queryByText('Open Gate');
 beforeEach(()=>{
     wrapper = rtl.render(<Dashboard />)
 })
@@ -40,6 +41,17 @@ describe('Dashboard component freshly rendered', ()=>{
         expect(LockGate()).toBeVisible();
         expect(LockGate()).toBeDisabled();
     
+    })
+
+})
+describe('Dashboard component when gate is close', () =>{
+    it('clicking close makes close button disapear', ()=>{
+        expect(CloseGate()).toBeVisible();
+        rtl.fireEvent.click(CloseGate());
+        expect(CloseGate()).toBe(null);
+        expect(OpenGate()).toBeInTheDocument();
+        expect(OpenGate()).toBeVisible();
+        expect(LockGate()).toBeEnabled();
     })
 
 })
