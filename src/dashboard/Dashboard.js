@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
     return (
       <>
-      My name is Apiyo
+  
         <Display locked={locked} closed={closed} />
         <Controls
           locked={locked}

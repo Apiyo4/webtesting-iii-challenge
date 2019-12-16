@@ -9,7 +9,8 @@ import Display from './Display';
 
 afterEach(rtl.cleanup);
 let wrapper;
-let Unlocked =()=> wrapper.queryByText('Unlocked');
+
+let Unlocked = ()=> wrapper.queryByText('Unlocked');
 let Locked =()=> wrapper.queryByText('Locked');
 let Closed =()=> wrapper.queryByText('Closed');
 let Opened =()=> wrapper.queryByText('Open');
@@ -21,21 +22,5 @@ beforeEach(()=>{
 });
 it('Renders without crashing', ()=>{
     wrapper.debug();
+    // expect(wrapper.container).toMatchSnapshot();
 });
-describe('Display component', ()=>{
-        it('Renders "Closed" if closed prop is true and "Open" otherwise', ()=>{
-            wrapper = rtl.render(<Display closed={true} />)
-            expect(Opened()).toBeVisible();
-            wrapper = rtl.render(<Display />)
-            expect(Closed()).toBeVisible();
-        })
-        it('Renders "Locked" if locked prop is true and "Unlocked" otherwise', ()=>{
-            
-            wrapper = rtl.render(<Display locked={true} />)
-            expect(Unlocked()).toBeVisible();
-            wrapper = rtl.render(<Display />)
-            expect(Locked()).toBeVisible();
-            
-        })
-    
-    })
