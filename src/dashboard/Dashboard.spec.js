@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Dashboard from './Dashboard';
-import Display from '../display/Display'
+import Display from '../display/Display';
+import Controls from '../controls/Controls';
 
 
 afterEach(rtl.cleanup);
@@ -57,6 +58,20 @@ describe('Dashboard component when gate is close', () =>{
     })
 
 })
+describe('Dashboard component when gate is close and locked', () =>{
+    it('clicking close makes close button disapear', ()=>{
+        expect(CloseGate()).toBeVisible();
+        rtl.fireEvent.click(CloseGate());
+        expect(CloseGate()).toBe(null);
+        expect(OpenGate()).toBeInTheDocument();
+        expect(OpenGate()).toBeVisible();
+        expect(LockGate()).toBeEnabled();
+        rtl.fireEvent.click(LockGate());
+        expect(OpenGate()).toBeDisabled();
+    })
+
+})
+
 
 describe('Display component', ()=>{
     it('Renders "Closed" if closed prop is true and "Open" otherwise', ()=>{
@@ -88,3 +103,4 @@ describe('Display component when locked and closed is false', ()=>{
     });
     
 })
+
